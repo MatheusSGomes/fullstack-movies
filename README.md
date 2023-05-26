@@ -26,6 +26,7 @@ O front-end deverá ser desenvolvido em React deve apresentar pelo menos os segu
 Não se deve fazer o commit de pastas como node_modules, o projeto deve instalar suas dependências a partir do package.json
 
 # Extras:
+    •  Publicação no Vercel.app
     •  Uso de Containers Docker
     •  Uso de Testes com PHPUnit
     •  Build para produção
