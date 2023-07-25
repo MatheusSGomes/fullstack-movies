@@ -1,6 +1,6 @@
 ## Teste Desenvolvedor Full Stack
 
-O teste consiste em criar uma aplicação com PHP usando FrameWork Laravel e Mysql que expõe uma API REST de um CRUD de usuários e filmes e uma aplicação web contendo uma interface para login e acesso a dados de uma API externa.
+O teste consiste em criar uma aplicação com Backend(A seu critério) que expõe uma API REST de um CRUD de usuários e filmes e uma aplicação web contendo uma interface(React/Next.JS) para login e acesso a dados de uma API externa.
 
 # Back-end
     •  Todos os endpoints de consulta de dados devem ter autenticação por Token ou similar
@@ -28,5 +28,5 @@ Não se deve fazer o commit de pastas como node_modules, o projeto deve instala
 # Extras:
     •  Publicação no Vercel.app
     •  Uso de Containers Docker
-    •  Uso de Testes com PHPUnit
+    •  Uso de Testes
     •  Build para produção
