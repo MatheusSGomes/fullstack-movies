@@ -21,7 +21,7 @@ class MovieService
             "cover" => $request->cover,
             "embed_trailer" => $request->embed_trailer,
             "release_year" => $request->release_year,
-            "gender" => $request->gender,
+            "gender_id" => $request->gender_id,
             "synopsis" => $request->synopsis,
             "user_id" => $user->id,
         ]);

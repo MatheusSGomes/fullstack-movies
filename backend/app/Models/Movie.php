@@ -14,8 +14,13 @@ class Movie extends Model
         'cover',
         'embed_trailer',
         'release_year',
-        'gender',
+        'gender_id',
         'synopsis',
         'user_id',
     ];
+
+    public function gender()
+    {
+        return $this->hasOne(Gender::class, 'id', 'gender_id');
+    }
 }
