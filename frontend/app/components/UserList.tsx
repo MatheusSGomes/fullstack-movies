@@ -1,20 +1,23 @@
-const UserList = () => {
+import { IUser } from "@/types/users";
+import User from "./User";
+
+interface UserListProps {
+    users: IUser[]
+}
+
+const UserList: React.FC<UserListProps> = ({ users }) => {
+
     return (
         <div className="overflow-x-auto">
             <table className="table w-fulll">
-                {/* head */}
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Favorite Color</th>
+                        <th>Usuário</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {/* row 1 */}
-                    <tr>
-                        <td>Cy Ganderton</td>
-                        <td>Blue</td>
-                    </tr>
+                    {users.map((user) => <User key={user.id} user={user} />)}
                 </tbody>
             </table>
         </div>

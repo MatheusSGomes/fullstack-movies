@@ -5,7 +5,6 @@ import UserList from "./components/UserList";
 export default async function Home() {
 
   const users = await getAllUsers();
-  console.log(users);
 
   return (
     <main className='max-w-4xl mx-auto mt-4'>
@@ -13,7 +12,7 @@ export default async function Home() {
         <h1 className="text-2xl font-bold">Usuários</h1>
         <AddUser />
       </div>
-      <UserList />
+      <UserList users={users.data} />
     </main>
   );
 }
