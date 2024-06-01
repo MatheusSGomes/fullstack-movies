@@ -19,6 +19,13 @@ return new class extends Migration
             $table->string('release_year');
             $table->string('gender');
             $table->string('synopsis');
+
+            $table->foreignUuid('user_id')
+                ->references('id')
+                ->on('users')
+                ->cascadeOnDelete()
+                ->cascadeOnUpdate();
+
             $table->timestamps();
         });
     }
