@@ -9,3 +9,10 @@ export interface IUserPost {
     email: string,
     password: string,
 }
+
+export interface IUserPut {
+    id: string|number|null,
+    name: string,
+    email: string,
+    password: string,
+}
