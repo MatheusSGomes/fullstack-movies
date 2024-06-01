@@ -52,7 +52,7 @@ const User: React.FC<UserProps> = ({ user }) => {
                 <Modal modalOpen={modalOpenEdit} setModalOpen={setModalOpenEdit} >
                     <form onSubmit={handleSubmitEditUser}>
                         <h3 className="font-bold text-lg">Editar usuário</h3>
-                        <div className="modal-action">
+                        <div className="flex flex-col gap-3 mt-3">
                             <input
                                 value={userNameToEdit}
                                 onChange={e => setUserNameToEdit(e.target.value)}
@@ -77,7 +77,7 @@ const User: React.FC<UserProps> = ({ user }) => {
                                 className="input input-bordered w-full"
                                 required
                             />
-                            <button type='submit' className='btn'>Atualizar</button>
+                            <button type='submit' className='btn w-full'>Atualizar</button>
                         </div>
                     </form>
                 </Modal>

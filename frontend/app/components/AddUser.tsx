@@ -41,7 +41,7 @@ const AddUser = () => {
             <Modal modalOpen={modalOpen} setModalOpen={setModalOpen} >
                 <form onSubmit={handleSubmitNewUser}>
                     <h3 className="font-bold text-lg">Adicionar novo usuário</h3>
-                    <div className="modal-action">
+                    <div className="flex flex-col gap-3 mt-3">
                         <input
                             value={newUserNameValue}
                             onChange={e => setNewUserNameValue(e.target.value)}
@@ -63,7 +63,7 @@ const AddUser = () => {
                             placeholder="Senha"
                             className="input input-bordered w-full"
                         />
-                        <button type='submit' className='btn'>Cadastrar</button>
+                        <button type='submit' className='btn w-full'>Cadastrar</button>
                     </div>
                 </form>
             </Modal>
