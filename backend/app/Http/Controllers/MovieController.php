@@ -15,7 +15,7 @@ class MovieController extends Controller
     public function index()
     {
         $movies = $this->movieService->getMovies();
-        return MovieResource::collection($movies);;
+        return MovieResource::collection($movies);
     }
 
     public function store(Request $request)

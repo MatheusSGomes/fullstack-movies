@@ -36,7 +36,13 @@ class MovieService
     {
         $movie = Movie::find($id);
 
-        // TODO: tratamento caso não exista o filme
+        if (!$movie) {
+            return response()->json([
+                'message' => 'Filme não encontrado.',
+                'status' => 'error'
+            ], 404);
+        }
+
         $movie->update([
             "title" => $request->title,
         ]);
@@ -46,7 +52,15 @@ class MovieService
 
     public function deleteMovie(int|string $id)
     {
-        // TODO: feedback para caso o filme não exista
-        return Movie::find($id)->delete();
+        $movie = Movie::find($id);
+
+        if (!$movie) {
+            return response()->json([
+                'message' => 'Filme não encontrado.',
+                'status' => 'error'
+            ], 404);
+        }
+
+        return $movie->delete();
     }
 }

@@ -32,7 +32,14 @@ class UserService
         $user = User::find($id);
 
         // TODO: validação para email duplicado
-        // TODO: tratamento caso não exista usuário
+
+        if (!$user) {
+            return response()->json([
+                'message' => 'Usuário não encontrado.',
+                'status' => 'error'
+            ], 404);
+        }
+
         $user->update([
             "name" => $request->name,
             "email" => $request->email,
@@ -44,7 +51,15 @@ class UserService
 
     public function deleteUser(int|string $id)
     {
-        // TODO: feedback para caso o usuário não exista
-        return User::find($id)->delete();
+        $user = User::find($id);
+
+        if (!$user) {
+            return response()->json([
+                'message' => 'Usuário não encontrado.',
+                'status' => 'error'
+            ], 404);
+        }
+
+        return $user->delete();
     }
 }
