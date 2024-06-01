@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Services\UserService;
+use App\Http\Resources\UserResource;
 
 class AuthController extends Controller
 {
+    public function __construct(
+        private UserService $userService,
+    ) { }
+
     public function login(Request $request)
     {
         // TODO: passar validação credenciais para FormRequest
@@ -30,6 +36,7 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        //
+        $user = $this->userService->createUser($request);
+        return UserResource::make($user);
     }
 }
