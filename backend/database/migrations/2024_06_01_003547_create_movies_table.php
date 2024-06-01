@@ -17,10 +17,15 @@ return new class extends Migration
             $table->string('cover');
             $table->string('embed_trailer');
             $table->string('release_year');
-            $table->string('gender_id');
             $table->string('synopsis');
 
-            $table->foreignUuid('user_id')
+            $table->foreignId('gender_id')
+                ->references('id')
+                ->on('genders')
+                ->cascadeOnDelete()
+                ->cascadeOnUpdate();
+
+            $table->foreignId('user_id')
                 ->references('id')
                 ->on('users')
                 ->cascadeOnDelete()

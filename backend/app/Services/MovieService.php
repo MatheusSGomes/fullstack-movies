@@ -14,14 +14,13 @@ class MovieService
 
     public function createMovie(Request $request)
     {
-        $user = auth()->user()->id;
+        $user = auth()->user();
 
         return Movie::create([
             "title" => $request->title,
             "cover" => $request->cover,
             "embed_trailer" => $request->embed_trailer,
             "release_year" => $request->release_year,
-            // TODO: genero deve estar em uma tabela separada, e uma seeder para preencher os principais generos
             "gender" => $request->gender,
             "synopsis" => $request->synopsis,
             "user_id" => $user->id,

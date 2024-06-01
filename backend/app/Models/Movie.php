@@ -11,5 +11,11 @@ class Movie extends Model
 
     protected $fillable = [
         'title',
+        'cover',
+        'embed_trailer',
+        'release_year',
+        'gender',
+        'synopsis',
+        'user_id',
     ];
 }
