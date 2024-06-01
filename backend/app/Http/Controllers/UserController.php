@@ -2,45 +2,41 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\UserService;
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Http\Resources\UserResource;
 
 class UserController extends Controller
 {
+    public function __construct(
+        private UserService $userService,
+    ) { }
     public function index()
     {
-        return User::all();
+        $users = $this->userService->getUsers();
+        return UserResource::collection($users);;
     }
 
     public function store(Request $request)
     {
-        // TODO: validação para email duplicado
-        return User::create([
-            "name" => $request->name,
-            "email" => $request->email,
-            "password" => $request->password,
-        ]);
+        $user = $this->userService->createUser($request);
+        return UserResource::make($user);
     }
 
     public function show(string $id)
     {
-        return User::find($id);
+        $user = $this->userService->getUser($id);
+        return UserResource::make($user);
     }
 
     public function update(Request $request, string $id)
     {
-        $user = User::find($id);
-
-        // TODO: validação para email duplicado
-        return $user->update([
-            "name" => $request->name,
-            "email" => $request->email,
-            "password" => $request->password,
-        ]);
+        $user = $this->userService->updateUser($request, $id);
+        return UserResource::make($user);
     }
 
     public function destroy(string $id)
     {
-        return User::find($id)->delete();
+        return $this->userService->deleteUser($id);
     }
 }
