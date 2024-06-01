@@ -11,6 +11,7 @@ class UserController extends Controller
     public function __construct(
         private UserService $userService,
     ) { }
+
     public function index()
     {
         $users = $this->userService->getUsers();
