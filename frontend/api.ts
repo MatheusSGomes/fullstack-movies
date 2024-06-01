@@ -24,6 +24,7 @@ export const addUser = async (user: IUserPost): Promise<IUserPost> => {
         body: JSON.stringify(user),
     });
     const newUser = await res.json();
+    // TODO: adicionar toaster para indicar que usuário foi cadastrado
     return newUser;
 }
 
@@ -37,5 +38,14 @@ export const editUser = async (user: IUserPut): Promise<IUserPut> => {
         body: JSON.stringify(user),
     });
     const updatedUser = await res.json();
+    // TODO: adicionar toaster para indicar que usuário foi atualizado
     return updatedUser;
+}
+
+export const deleteUser = async (user_id: string|number): Promise<any> => {
+    const res = await fetch(`${baseURL}/user/${user_id}`, {
+        method: 'DELETE',
+    });
+    // TODO: adicionar toaster para indicar que usuário foi apagado
+    console.log(res);
 }

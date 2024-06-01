@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { FormEventHandler, useState } from "react";
 import { FiEdit, FiTrash } from "react-icons/fi";
 import Modal from "./Modal";
-import { editUser } from "@/api";
+import { deleteUser, editUser } from "@/api";
 
 interface UserProps {
     user: IUser
@@ -32,13 +32,15 @@ const User: React.FC<UserProps> = ({ user }) => {
             password: userPasswordToEdit,
         })
 
-        setUserNameToEdit('');
-        setUserEmailToEdit('');
-        setUserPasswordToEdit('');
-
         setModalOpenEdit(false);
         setModalOpenDelete(false);
 
+        router.refresh();
+    }
+
+    const handleDeleteUser = async (user_id: string|number) => {
+        await deleteUser(user_id);
+        setModalOpenDelete(false);
         router.refresh();
     }
 
@@ -75,12 +77,26 @@ const User: React.FC<UserProps> = ({ user }) => {
                                 className="input input-bordered w-full"
                                 required
                             />
-                            <button type='submit' className='btn'>Cadastrar</button>
+                            <button type='submit' className='btn'>Atualizar</button>
                         </div>
                     </form>
                 </Modal>
 
-                <FiTrash cursor="pointer" className='text-red-500' size={25} />
+                <FiTrash onClick={() => setModalOpenDelete(true)} cursor="pointer" className='text-red-500' size={25} />
+
+                <Modal modalOpen={modalOpenDelete} setModalOpen={setModalOpenDelete} >
+                    <h3 className="text-lg">Tem certeza que deseja apagar o usuário?</h3>
+                    <div className="modal-action">
+                        <button
+                            onClick={() => setModalOpenDelete(false)}
+                            className="btn"
+                        >Não</button>
+                        <button
+                            onClick={() => handleDeleteUser(user.id)}
+                            className="btn btn-primary"
+                        >Sim</button>
+                    </div>
+                </Modal>
             </td>
         </tr>
     );
