@@ -72,7 +72,7 @@ export const getAllMovies = async (): Promise<IMovie[]> => {
     return movies;
 }
 
-export const addMovie = async (user: IMoviePost): Promise<IMoviePost> => {
+export const addMovie = async (movie: IMoviePost): Promise<IMoviePost> => {
     const res = await fetch(`${baseURL}/movie`, {
         method: 'POST',
         headers: {
@@ -80,11 +80,11 @@ export const addMovie = async (user: IMoviePost): Promise<IMoviePost> => {
             'Content-Type': 'application/json',
             'Authorization':`Bearer ${bearerToken}`,
         },
-        body: JSON.stringify(user),
+        body: JSON.stringify(movie),
     });
-    const newUser = await res.json();
+    const newMovie = await res.json();
     // TODO: adicionar toaster para indicar que usuário foi cadastrado
-    return newUser;
+    return newMovie;
 }
 
 export const editMovie = async (movie: IMoviePut): Promise<IMoviePut> => {
