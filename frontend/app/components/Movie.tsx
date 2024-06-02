@@ -50,86 +50,77 @@ const Movie: React.FC<MovieProps> = ({ movie }) => {
     }
 
     return (
-        <tr key={movie.id}>
-            <td className='w-full'>{movie.title}</td>
-            <td className='flex gap-5'>
-                <FiEdit onClick={() => setModalOpenEdit(true)} cursor="pointer" className='text-blue-500' size={25} />
-                <Modal modalOpen={modalOpenEdit} setModalOpen={setModalOpenEdit} >
-                    <form onSubmit={handleSubmitEditMovie}>
-                        <h3 className="font-bold text-lg">Editar filme</h3>
-                        <div className="flex flex-col gap-3 mt-3">
-                            <input
-                                value={movieTitleToEdit}
-                                onChange={e => setMovieTitleToEdit(e.target.value)}
-                                type="text"
-                                placeholder="Título"
-                                className="input input-bordered w-full"
-                                required
-                            />
-                            {/* TODO: Genero deve ser um campo tipo input image */}
-                            <input
-                                value={movieCoverToEdit}
-                                onChange={e => setMovieCoverToEdit(e.target.value)}
-                                type="text"
-                                placeholder="Capa"
-                                className="input input-bordered w-full"
-                                required
-                            />
-                            <input
-                                value={movieEmbedTrailerToEdit}
-                                onChange={e => setMovieEmbedTrailerToEdit(e.target.value)}
-                                type="text"
-                                placeholder="Link Trailer"
-                                className="input input-bordered w-full"
-                                required
-                            />
-                            <input
-                                value={movieReleaseYearToEdit}
-                                onChange={e => setMovieReleaseYearToEdit(e.target.value)}
-                                type="text"
-                                placeholder="Ano Lançamento"
-                                className="input input-bordered w-full"
-                                required
-                            />
-                            {/* TODO: Genero deve ser um campo do tipo select */}
-                            <input
-                                value={movieGenderToEdit}
-                                onChange={e => setMovieGenderToEdit(e.target.value)}
-                                type="text"
-                                placeholder="Genero"
-                                className="input input-bordered w-full"
-                                required
-                            />
-                            <input
-                                value={movieSynopsisToEdit}
-                                onChange={e => setMovieSynopsisToEdit(e.target.value)}
-                                type="text"
-                                placeholder="Sinopse"
-                                className="input input-bordered w-full"
-                                required
-                            />
-                            <button type='submit' className='btn btn-primary w-full'>Atualizar</button>
-                        </div>
-                    </form>
-                </Modal>
-
-                <FiTrash onClick={() => setModalOpenDelete(true)} cursor="pointer" className='text-red-500' size={25} />
-
-                <Modal modalOpen={modalOpenDelete} setModalOpen={setModalOpenDelete} >
-                    <h3 className="text-lg">Tem certeza que deseja apagar o filme?</h3>
-                    <div className="modal-action">
-                        <button
-                            onClick={() => setModalOpenDelete(false)}
-                            className="btn"
-                        >Não</button>
-                        <button
-                            onClick={() => handleDeleteMovie(movie.id)}
-                            className="btn btn-primary"
-                        >Sim</button>
+        <div key={movie.id} className="flex flex-row gap-3">
+            <FiEdit onClick={() => setModalOpenEdit(true)} cursor="pointer" className='text-blue-500' size={25} />
+            <Modal modalOpen={modalOpenEdit} setModalOpen={setModalOpenEdit} >
+                <form onSubmit={handleSubmitEditMovie}>
+                    <h3 className="font-bold text-lg">Editar filme</h3>
+                    <div className="flex flex-col gap-3 mt-3">
+                        <input
+                            value={movieTitleToEdit}
+                            onChange={e => setMovieTitleToEdit(e.target.value)}
+                            type="text"
+                            placeholder="Título"
+                            className="input input-bordered w-full"
+                        />
+                        {/* TODO: Genero deve ser um campo tipo input image */}
+                        <input
+                            value={movieCoverToEdit}
+                            onChange={e => setMovieCoverToEdit(e.target.value)}
+                            type="text"
+                            placeholder="Capa"
+                            className="input input-bordered w-full"
+                        />
+                        <input
+                            value={movieEmbedTrailerToEdit}
+                            onChange={e => setMovieEmbedTrailerToEdit(e.target.value)}
+                            type="text"
+                            placeholder="Link Trailer"
+                            className="input input-bordered w-full"
+                        />
+                        <input
+                            value={movieReleaseYearToEdit}
+                            onChange={e => setMovieReleaseYearToEdit(e.target.value)}
+                            type="text"
+                            placeholder="Ano Lançamento"
+                            className="input input-bordered w-full"
+                        />
+                        {/* TODO: Genero deve ser um campo do tipo select */}
+                        <input
+                            value={movieGenderToEdit}
+                            onChange={e => setMovieGenderToEdit(e.target.value)}
+                            type="text"
+                            placeholder="Genero"
+                            className="input input-bordered w-full"
+                        />
+                        <input
+                            value={movieSynopsisToEdit}
+                            onChange={e => setMovieSynopsisToEdit(e.target.value)}
+                            type="text"
+                            placeholder="Sinopse"
+                            className="input input-bordered w-full"
+                        />
+                        <button type='submit' className='btn btn-primary w-full'>Atualizar</button>
                     </div>
-                </Modal>
-            </td>
-        </tr>
+                </form>
+            </Modal>
+
+            <FiTrash onClick={() => setModalOpenDelete(true)} cursor="pointer" className='text-red-500' size={25} />
+
+            <Modal modalOpen={modalOpenDelete} setModalOpen={setModalOpenDelete} >
+                <h3 className="text-lg">Tem certeza que deseja apagar o filme?</h3>
+                <div className="modal-action">
+                    <button
+                        onClick={() => setModalOpenDelete(false)}
+                        className="btn"
+                    >Não</button>
+                    <button
+                        onClick={() => handleDeleteMovie(movie.id)}
+                        className="btn btn-primary"
+                    >Sim</button>
+                </div>
+            </Modal>
+        </div>
     );
 }
 
