@@ -43,8 +43,16 @@ class MovieService
             ], 404);
         }
 
+        $user = auth()->user();
+
         $movie->update([
-            "title" => $request->title,
+            "title" => $request->title ?? $movie->title,
+            "cover" => $request->cover ?? $movie->cover,
+            "embed_trailer" => $request->embed_trailer ?? $movie->embed_trailer,
+            "release_year" => $request->release_year ?? $movie->release_year,
+            "gender_id" => $request->gender_id ?? $movie->gender_id,
+            "synopsis" => $request->synopsis ?? $movie->synopsis,
+            "user_id" => $user->id,
         ]);
 
         return $movie;

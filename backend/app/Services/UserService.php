@@ -41,9 +41,9 @@ class UserService
         }
 
         $user->update([
-            "name" => $request->name,
-            "email" => $request->email,
-            "password" => $request->password,
+            "name" => $request->name ?? $user->name,
+            "email" => $request->email  ?? $user->email,
+            "password" => $request->password  ?? $user->password,
         ]);
 
         return $user;
