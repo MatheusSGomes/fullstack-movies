@@ -13,7 +13,8 @@ export default async function Home() {
         <AddUser />
       </div>
 
-      <UserList users={users.data} />
+      {users ? <UserList users={users.data} />
+      : <h1>Nenhum usuário encontrado</h1>}
     </main>
   );
 }

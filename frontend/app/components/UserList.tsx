@@ -17,7 +17,10 @@ const UserList: React.FC<UserListProps> = ({ users }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {users.map((user) => <User key={user.id} user={user} />)}
+
+                    {users ? users.map((user) => <User key={user.id} user={user} />)
+                    : <tr><td colSpan={2} className="text-center">Nenhum usuário encontrado</td></tr>}
+
                 </tbody>
             </table>
         </div>
