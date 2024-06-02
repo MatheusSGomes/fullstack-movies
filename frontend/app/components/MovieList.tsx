@@ -7,8 +7,6 @@ interface MovieListProps {
 
 const MovieList: React.FC<MovieListProps> = ({ movies }) => {
 
-    console.log(movies)
-
     return (
         <div className="overflow-x-auto">
             <table className="table w-fulll">

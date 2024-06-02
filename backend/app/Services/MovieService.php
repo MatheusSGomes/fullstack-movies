@@ -9,7 +9,7 @@ class MovieService
 {
     public function getMovies()
     {
-        return Movie::all();
+        return Movie::paginate(10);
     }
 
     public function createMovie(Request $request)
