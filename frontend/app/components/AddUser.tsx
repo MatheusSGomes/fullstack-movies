@@ -63,7 +63,7 @@ const AddUser = () => {
                             placeholder="Senha"
                             className="input input-bordered w-full"
                         />
-                        <button type='submit' className='btn w-full'>Cadastrar</button>
+                        <button type='submit' className='btn btn-primary w-full'>Cadastrar</button>
                     </div>
                 </form>
             </Modal>

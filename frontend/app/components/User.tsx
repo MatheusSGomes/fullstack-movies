@@ -77,7 +77,7 @@ const User: React.FC<UserProps> = ({ user }) => {
                                 className="input input-bordered w-full"
                                 required
                             />
-                            <button type='submit' className='btn w-full'>Atualizar</button>
+                            <button type='submit' className='btn btn-primary w-full'>Atualizar</button>
                         </div>
                     </form>
                 </Modal>
