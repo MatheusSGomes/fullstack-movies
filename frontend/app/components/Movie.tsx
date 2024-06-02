@@ -44,7 +44,7 @@ const Movie: React.FC<MovieProps> = ({ movie }) => {
     }
 
     const handleDeleteMovie = async (movie_id: string|number) => {
-        // await deleteMovie(movie_id);
+        await deleteMovie(movie_id);
         setModalOpenDelete(false);
         router.refresh();
     }
@@ -56,7 +56,7 @@ const Movie: React.FC<MovieProps> = ({ movie }) => {
                 <FiEdit onClick={() => setModalOpenEdit(true)} cursor="pointer" className='text-blue-500' size={25} />
                 <Modal modalOpen={modalOpenEdit} setModalOpen={setModalOpenEdit} >
                     <form onSubmit={handleSubmitEditMovie}>
-                        <h3 className="font-bold text-lg">Editar usuário</h3>
+                        <h3 className="font-bold text-lg">Editar filme</h3>
                         <div className="flex flex-col gap-3 mt-3">
                             <input
                                 value={movieTitleToEdit}
@@ -116,7 +116,7 @@ const Movie: React.FC<MovieProps> = ({ movie }) => {
                 <FiTrash onClick={() => setModalOpenDelete(true)} cursor="pointer" className='text-red-500' size={25} />
 
                 <Modal modalOpen={modalOpenDelete} setModalOpen={setModalOpenDelete} >
-                    <h3 className="text-lg">Tem certeza que deseja apagar o usuário?</h3>
+                    <h3 className="text-lg">Tem certeza que deseja apagar o filme?</h3>
                     <div className="modal-action">
                         <button
                             onClick={() => setModalOpenDelete(false)}
