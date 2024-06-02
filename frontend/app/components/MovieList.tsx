@@ -17,7 +17,11 @@ const MovieList: React.FC<MovieListProps> = ({ movies }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {movies.map((movie: any) => <Movie key={movie.id} movie={movie} />)}
+
+                    { movies ?
+                    movies.map((movie: any) => <Movie key={movie.id} movie={movie} />)
+                    : <tr><td colSpan={2} className="text-center">Nenhum filme encontrado</td></tr>}
+
                 </tbody>
             </table>
         </div>

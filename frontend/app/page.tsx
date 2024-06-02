@@ -13,7 +13,8 @@ export default async function Home() {
         <AddMovie />
       </div>
 
-      <MovieList movies={movies.data} />
+      {movies ? <MovieList movies={movies.data} />
+      : <h1>Nenhum filme encontrado</h1>}
     </main>
   );
 }
