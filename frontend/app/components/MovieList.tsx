@@ -2,7 +2,7 @@ import { IMovie } from "@/types/movies";
 import Movie from "./Movie";
 
 interface MovieListProps {
-    Movies: IMovie[]
+    movies: IMovie|any
 }
 
 const MovieList: React.FC<MovieListProps> = ({ movies }) => {
@@ -17,7 +17,7 @@ const MovieList: React.FC<MovieListProps> = ({ movies }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {movies.map((movie) => <Movie key={movie.id} movie={movie} />)}
+                    {movies.map((movie: any) => <Movie key={movie.id} movie={movie} />)}
                 </tbody>
             </table>
         </div>

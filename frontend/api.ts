@@ -9,7 +9,7 @@ const baseURL = 'http://localhost:8000/api';
 const bearerToken = '3|tUTjIgajYe36WMU5tHwgwcNR4TU69yO2Bz1tO5AO64fb2272';
 
 /* USERS */
-export const getAllUsers = async (): Promise<IUser[]> => {
+export const getAllUsers = async (): Promise<any> => {
     const res = await fetch(`${baseURL}/user`, {
         cache: 'no-store',
         headers: new Headers({
@@ -21,7 +21,7 @@ export const getAllUsers = async (): Promise<IUser[]> => {
     return users;
 }
 
-export const addUser = async (user: IUserPost): Promise<IUserPost> => {
+export const addUser = async (user: IUserPost): Promise<any> => {
     const res = await fetch(`${baseURL}/user`, {
         method: 'POST',
         headers: {
@@ -35,7 +35,7 @@ export const addUser = async (user: IUserPost): Promise<IUserPost> => {
     return newUser;
 }
 
-export const editUser = async (user: IUserPut): Promise<IUserPut> => {
+export const editUser = async (user: IUserPut): Promise<any> => {
     const res = await fetch(`${baseURL}/user/${user.id}`, {
         method: 'PUT',
         headers: {
@@ -58,7 +58,7 @@ export const deleteUser = async (user_id: string|number): Promise<any> => {
 }
 
 /* MOVIES */
-export const getAllMovies = async (): Promise<IMovie[]> => {
+export const getAllMovies = async (): Promise<any> => {
     const res = await fetch(`${baseURL}/movie`, {
         cache: 'no-store',
         headers: new Headers({
@@ -72,7 +72,7 @@ export const getAllMovies = async (): Promise<IMovie[]> => {
     return movies;
 }
 
-export const addMovie = async (movie: IMoviePost): Promise<IMoviePost> => {
+export const addMovie = async (movie: IMoviePost): Promise<any> => {
     const res = await fetch(`${baseURL}/movie`, {
         method: 'POST',
         headers: {
@@ -87,7 +87,7 @@ export const addMovie = async (movie: IMoviePost): Promise<IMoviePost> => {
     return newMovie;
 }
 
-export const editMovie = async (movie: IMoviePut): Promise<IMoviePut> => {
+export const editMovie = async (movie: IMoviePut): Promise<any> => {
     const res = await fetch(`${baseURL}/movie/${movie.id}`, {
         method: 'PUT',
         headers: {

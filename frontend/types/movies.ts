@@ -4,7 +4,7 @@ export interface IMovie {
     cover: string,
     embed_trailer: string,
     release_year: string,
-    gender_id: string,
+    gender: string,
     synopsis: string,
 }
 
