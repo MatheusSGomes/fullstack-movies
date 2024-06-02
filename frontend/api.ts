@@ -1,5 +1,6 @@
 import { IUser, IUserPost, IUserPut } from "./types/users";
 import { IMovie, IMoviePost, IMoviePut } from "./types/movies";
+import { ILogin } from "./types/login";
 
 const baseURL = 'http://localhost:8000/api';
 
@@ -109,4 +110,18 @@ export const deleteMovie = async (movie_id: string|number): Promise<any> => {
     });
     // TODO: adicionar toaster para indicar que usuário foi apagado
     console.log(res);
+}
+
+export const login = async (user: ILogin): Promise<any> => {
+    const res = await fetch(`${baseURL}/login`, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user),
+    });
+    const login = await res.json();
+    console.log(login.token);
+    return login;
 }
