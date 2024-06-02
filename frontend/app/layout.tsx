@@ -26,6 +26,7 @@ export default function RootLayout({
             <div className="navbar-end gap-3">
               <Link href="/movies" className="btn">Filmes</Link>
               <Link href="/users" className="btn">Usuários</Link>
+              <Link href="/login" className="btn">Logout</Link>
             </div>
           </div>
         </div>

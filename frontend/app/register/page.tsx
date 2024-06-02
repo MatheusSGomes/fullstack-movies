@@ -1,25 +1,26 @@
 'use client';
 
 import { FormEventHandler, useState } from "react";
-import { login } from "@/api";
+import { addUser } from "@/api";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 
 const AddUser = () => {
     const router = useRouter();
 
+    const [userNameValue, setUserNameValue] = useState<string>('');
     const [userEmailValue, setUserEmailValue] = useState<string>('');
     const [userPasswordlValue, setUserPasswordlValue] = useState<string>('');
 
-    const handleSubmitLogin: FormEventHandler<HTMLFormElement> = async (e) => {
+    const handleSubmitRegister: FormEventHandler<HTMLFormElement> = async (e) => {
         e.preventDefault();
 
-        await login({
+        await addUser({
+            name: userNameValue,
             email: userEmailValue,
             password: userPasswordlValue,
         })
 
-        // TODO: redireciona para home
+        router.push('/movies')
     }
 
     return (
@@ -27,9 +28,21 @@ const AddUser = () => {
             <div className="flex flex-col items-center justify-center h-screen overflow-hidden">
                 <div className="w-full p-6 bg-white dark:bg-slate-900 rounded-md shadow-md border-top max-w-lg">
                     <h1 className="text-3xl font-semibold text-center text-white">
-                        Login
+                        Cadastrar usuário
                     </h1>
-                    <form onSubmit={handleSubmitLogin} className="space-y-4">
+                    <form onSubmit={handleSubmitRegister} className="space-y-4">
+                        <div>
+                            <label className="label">
+                                <span className="text-base label-text text-white">Nome</span>
+                            </label>
+                            <input
+                                value={userNameValue}
+                                onChange={e => setUserNameValue(e.target.value)}
+                                type="text"
+                                placeholder="Nome"
+                                className="w-full input input-bordered"
+                            />
+                        </div>
                         <div>
                             <label className="label">
                                 <span className="text-base label-text text-white">Email</span>
@@ -54,12 +67,12 @@ const AddUser = () => {
                                 className="w-full input input-bordered"
                             />
                         </div>
+
                         <div>
-                            <button className="btn btn-block btn-primary text-white mt-3">Entrar</button>
+                            <button className="btn btn-block btn-primary text-white mt-3">Cadastrar</button>
                         </div>
                     </form>
                 </div>
-                <Link href="/register" className="text-lg text-gray-300 hover:underline hover:text-blue-600 mt-3">Cadastre-se</Link>
             </div>
         </div>
     );

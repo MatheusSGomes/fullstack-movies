@@ -1,6 +1,7 @@
 import { IUser, IUserPost, IUserPut } from "./types/users";
 import { IMovie, IMoviePost, IMoviePut } from "./types/movies";
 import { ILogin } from "./types/login";
+import { IRegister } from "./types/login";
 
 const baseURL = 'http://localhost:8000/api';
 
@@ -124,4 +125,8 @@ export const login = async (user: ILogin): Promise<any> => {
     const login = await res.json();
     console.log(login.token);
     return login;
+}
+
+export const register = async (user: IRegister): Promise<any> => {
+    alert('cadastro!');
 }
