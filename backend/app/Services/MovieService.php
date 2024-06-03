@@ -52,7 +52,7 @@ class MovieService
             "release_year" => $request->release_year ?? $movie->release_year,
             "gender_id" => $request->gender_id ?? $movie->gender_id,
             "synopsis" => $request->synopsis ?? $movie->synopsis,
-            "user_id" => $user->id,
+            "user_id" => $user ? $user->id : null,
         ]);
 
         return $movie;

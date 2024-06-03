@@ -6,15 +6,14 @@ interface MovieListProps {
 }
 
 const MovieList: React.FC<MovieListProps> = ({ movies }) => {
-
     return (
-        <div className="overflow-x-auto">
+        movies ? (<div className="overflow-x-auto">
             <div className="grid grid-cols-4 gap-4">
             {movies.map((movie: any) => {
                 return (
                     <div  key={movie.id} className="card card-compact bg-base-100 shadow-xl">
                         <figure>
-                            <img className="w-full" src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" alt="Movie"/>
+                            <img className="w-full" src={movie.cover} alt="Movie"/>
                         </figure>
 
                         <div className="card-body">
@@ -37,7 +36,7 @@ const MovieList: React.FC<MovieListProps> = ({ movies }) => {
                 );
             })}
             </div>
-        </div>
+        </div>) : (<div className="overflow-x-auto"><p className="text-center">Nenhum filme encontrado</p></div>)
     );
 }
 

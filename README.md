@@ -1,5 +1,17 @@
 # Teste Desenvolvedor Full Stack
 
+![Filmes](img004.png)
+
+![Filmes](img005.png)
+
+![Filmes](img006.png)
+
+![Filmes](img001.png)
+
+![Filmes](img002.png)
+
+![Filmes](img003.png)
+
 Link deploy vercel: https://fullstack-movies-8tlj26j99-matheus-gomes-projects.vercel.app/
 
 Para subir banco de dados PostgreSQL e Redis:
@@ -15,7 +27,12 @@ Para instalar as dependências:
 composer install
 ```
 
-Executar o comando para rodar as seeders de Genero:
+Executar cadastrar tabelas no banco de dados:
+```
+php artisan migrate
+```
+
+Executar o comando para rodar as seeders de gênero dos filmes:
 ```
 php artisan db:seed --class=GenderSeeder
 ```

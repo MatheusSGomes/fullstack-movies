@@ -6,7 +6,7 @@ import { IRegister } from "./types/login";
 const baseURL = 'http://localhost:8000/api';
 
 // TODO: buscar token de forma dinâmica após criar página de login
-const bearerToken = '3|tUTjIgajYe36WMU5tHwgwcNR4TU69yO2Bz1tO5AO64fb2272';
+const bearerToken = '25|qcOofWSPea8gURalEFeYqKcNC1Cqc5Qf3tlznn3W1302bf1d';
 
 /* USERS */
 export const getAllUsers = async (): Promise<any> => {
