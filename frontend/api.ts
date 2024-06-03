@@ -54,7 +54,6 @@ export const deleteUser = async (user_id: string|number): Promise<any> => {
         method: 'DELETE',
     });
     // TODO: adicionar toaster para indicar que usuário foi apagado
-    console.log(res);
 }
 
 /* MOVIES */
@@ -110,7 +109,20 @@ export const deleteMovie = async (movie_id: string|number): Promise<any> => {
         },
     });
     // TODO: adicionar toaster para indicar que usuário foi apagado
-    console.log(res);
+}
+
+/* GENDER */
+export const getGenders = async (): Promise<any> => {
+    const res = await fetch(`${baseURL}/gender`, {
+        cache: 'no-store',
+        headers: new Headers({
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization':`Bearer ${bearerToken}`,
+        }),
+    });
+    const gender = await res.json();
+    return gender;
 }
 
 export const login = async (user: ILogin): Promise<any> => {
@@ -123,10 +135,10 @@ export const login = async (user: ILogin): Promise<any> => {
         body: JSON.stringify(user),
     });
     const login = await res.json();
-    console.log(login.token);
     return login;
 }
 
 export const register = async (user: IRegister): Promise<any> => {
     alert('cadastro!');
 }
+

@@ -9,13 +9,8 @@ const MovieList: React.FC<MovieListProps> = ({ movies }) => {
 
     return (
         <div className="overflow-x-auto">
-
-
-
             <div className="grid grid-cols-4 gap-4">
             {movies.map((movie: any) => {
-                console.log(movie);
-
                 return (
                     <div  key={movie.id} className="card card-compact bg-base-100 shadow-xl">
                         <figure>
@@ -30,7 +25,6 @@ const MovieList: React.FC<MovieListProps> = ({ movies }) => {
 
                             <div className="flex flex-row gap-2">
                                 <div className="badge badge-secondary">{movie.release_year}</div>
-                                <div className="badge badge-secondary">{movie.gender}</div>
                             </div>
 
                             <p>{movie.synopsis}</p>
@@ -43,22 +37,6 @@ const MovieList: React.FC<MovieListProps> = ({ movies }) => {
                 );
             })}
             </div>
-
-            {/* <table className="table w-fulll">
-                <thead>
-                    <tr>
-                        <th>Filme</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    { movies ?
-                    movies.map((movie: any) => <Movie key={movie.id} movie={movie} />)
-                    : <tr><td colSpan={2} className="text-center">Nenhum filme encontrado</td></tr>}
-
-                </tbody>
-            </table> */}
         </div>
     );
 }

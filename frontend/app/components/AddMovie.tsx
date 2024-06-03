@@ -63,7 +63,7 @@ const AddMovie = () => {
                             value={movieCoverToEdit}
                             onChange={e => setMovieCoverToEdit(e.target.value)}
                             type="text"
-                            placeholder="Capa"
+                            placeholder="Link da capa"
                             className="input input-bordered w-full"
                         />
                         <input
