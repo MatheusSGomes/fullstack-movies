@@ -23,7 +23,7 @@ class MovieService
             "release_year" => $request->release_year,
             "gender_id" => $request->gender_id,
             "synopsis" => $request->synopsis,
-            "user_id" => $user->id,
+            "user_id" => $user ? $user->id : null,
         ]);
     }
 

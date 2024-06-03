@@ -26,6 +26,7 @@ return new class extends Migration
                 ->cascadeOnUpdate();
 
             $table->foreignId('user_id')
+                ->nullable()
                 ->references('id')
                 ->on('users')
                 ->cascadeOnDelete()
