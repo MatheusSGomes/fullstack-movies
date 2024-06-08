@@ -1,9 +1,9 @@
 'use client';
 
 import { FormEventHandler, useState } from "react";
-import { login } from "@/api";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { signInRequest } from "@/api";
 
 const AddUser = () => {
     const router = useRouter();
@@ -14,12 +14,14 @@ const AddUser = () => {
     const handleSubmitLogin: FormEventHandler<HTMLFormElement> = async (e) => {
         e.preventDefault();
 
-        await login({
+        const response = await signInRequest({
             email: userEmailValue,
             password: userPasswordlValue,
         })
 
-        // TODO: redireciona para home
+        console.log(response);
+
+        // router.push('/movies');
     }
 
     return (
