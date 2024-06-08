@@ -1,7 +1,9 @@
-import { IUser, IUserPost, IUserPut } from "./types/users";
-import { IMovie, IMoviePost, IMoviePut } from "./types/movies";
-import { SignInRequestData, SignInResponseData } from "./types/login";
 import axios from 'axios';
+import { parseCookies, setCookie, destroyCookie } from 'nookies';
+
+import { IUserPost, IUserPut } from "./types/users";
+import { IMoviePost, IMoviePut } from "./types/movies";
+import { SignInRequestData, SignInResponseData } from "./types/login";
 
 const baseURL = 'http://localhost:8000/api';
 
@@ -9,12 +11,16 @@ const api = axios.create({
     baseURL: 'http://localhost:8000/api'
 })
 
-/* NOVA AUTENTICAÇÃO */
+/* AUTENTICAÇÃO */
 export async function signInRequest(reqData: SignInRequestData) {
     try {
         const { data } :  SignInResponseData  = await api.post('/login', {
             email: reqData.email,
             password: reqData.password,
+        });
+
+        setCookie(null, 'movies_app_token', data.token, {
+            maxAge: 60 * 60 * 24 // 24 horas
         });
 
         return data;
