@@ -1,6 +1,6 @@
 'use client';
 
-import { IUser, IUserPost } from "@/types/users";
+import { IUser, IUserPost } from "@/app/types/users";
 import { useRouter } from "next/navigation";
 import { FormEventHandler, useState } from "react";
 import { FiEdit, FiTrash } from "react-icons/fi";

@@ -39,4 +39,15 @@ class AuthController extends Controller
         $user = $this->userService->createUser($request);
         return UserResource::make($user);
     }
+
+    public function authUser(Request $request)
+    {
+        if (!auth()->user()) {
+            return response()->json([
+                'message' => 'Usuário não autenticado',
+            ], 401);
+        }
+
+        return UserResource::make(auth()->user());
+    }
 }

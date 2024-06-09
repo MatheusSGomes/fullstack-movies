@@ -1,4 +1,4 @@
-import { IMovie } from "@/types/movies";
+import { IMovie } from "@/app/types/movies";
 import Movie from "./Movie";
 
 interface MovieListProps {

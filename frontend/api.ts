@@ -1,15 +1,15 @@
 import axios from 'axios';
 import { parseCookies, setCookie, destroyCookie } from 'nookies';
 
-import { IUserPost, IUserPut } from "./types/users";
-import { IMoviePost, IMoviePut } from "./types/movies";
-import { SignInRequestData, SignInResponseData } from "./types/login";
-
-const baseURL = 'http://localhost:8000/api';
+import { IUserPost, IUserPut } from "./app/types/users";
+import { IMoviePost, IMoviePut } from "./app/types/movies";
+import { SignInRequestData, SignInResponseData } from "./app/types/login";
 
 const api = axios.create({
     baseURL: 'http://localhost:8000/api'
-})
+});
+
+const baseURL = api.getUri();
 
 /* AUTENTICAÇÃO */
 export async function signInRequest(reqData: SignInRequestData) {
@@ -32,6 +32,20 @@ export async function signInRequest(reqData: SignInRequestData) {
 export async function signUpRequest(reqData: any) {}
 
 /* USERS */
+export async function recoverUserInformation() {
+    const userData = await api.get('/user');
+
+    console.log(userData);
+
+    return {
+        user: {
+            name: 'Matheus',
+            email: 'matheus@email.com',
+            avatar_url: 'https://github.com/MatheusSGomes.png'
+        }
+    }
+}
+
 export const getAllUsers = async (): Promise<any> => {
     const res = await fetch(`${baseURL}/user`, {
         cache: 'no-store',

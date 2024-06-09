@@ -1,4 +1,4 @@
-import { IUser } from "@/types/users";
+import { IUser } from "@/app/types/users";
 import User from "./User";
 
 interface UserListProps {

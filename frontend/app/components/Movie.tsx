@@ -1,6 +1,6 @@
 'use client';
 
-import { IMovie, IMoviePost } from "@/types/movies";
+import { IMovie, IMoviePost } from "@/app/types/movies";
 import { useRouter } from "next/navigation";
 import { FormEventHandler, useState } from "react";
 import { FiEdit, FiTrash } from "react-icons/fi";
