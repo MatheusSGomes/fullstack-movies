@@ -1,5 +1,6 @@
 'use client';
 
+import { recoverUserInformation } from "@/api";
 import { parseCookies } from "nookies";
 import { createContext, ReactNode, useEffect, useState } from "react";
 
@@ -15,11 +16,17 @@ export function AuthProvider({ children }: Props) {
     useEffect(() => {
         const { movies_app_token } = parseCookies();
 
-        console.log(movies_app_token);
+        if (movies_app_token) {
+            recoverUserInformation()
+                .then(response => {
+                    setUser(response.data);
+                })
+        }
+
     }, []);
 
     return (
-        <AuthContext.Provider value="">
+        <AuthContext.Provider value={{ user }}>
             {children}
         </AuthContext.Provider>
     );

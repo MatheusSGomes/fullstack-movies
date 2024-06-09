@@ -33,17 +33,14 @@ export async function signUpRequest(reqData: any) {}
 
 /* USERS */
 export async function recoverUserInformation() {
-    const userData = await api.get('/user');
-
-    console.log(userData);
-
-    return {
-        user: {
-            name: 'Matheus',
-            email: 'matheus@email.com',
-            avatar_url: 'https://github.com/MatheusSGomes.png'
+    const { movies_app_token } = parseCookies();
+    const user = await api.get('/auth-user', {
+        headers: {
+            Authorization: `Bearer ${movies_app_token}`
         }
-    }
+    });
+
+    return user.data;
 }
 
 export const getAllUsers = async (): Promise<any> => {
